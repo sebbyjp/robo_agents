@@ -1,4 +1,5 @@
-# robo_ml
+# Robo ML
+![Ubuntu 20.04](https://github.com/github/docs/actions/workflows/os.yml/badge.svg)
 Machine Learning Infrastructure for Robotics
 
 Application calls
