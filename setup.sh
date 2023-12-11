@@ -4,7 +4,12 @@
 # https://opensource.org/licenses/MIT
 
 #!/bin/bash
-git clone https://github.com/google/googletest.git && cd googletest \
+set -e
+
+vcs import --skip-existing third_party < third_party/.repos
+
+# TODO(speralta): Add this to Cmake using git fetch
+cd third_party/gtest \
  && mkdir -p build && cd build \
  && cmake .. && sudo make install \
- && cd ../.. && rm -rf googletest
+ && cd ../.. && rm -rf gtest
