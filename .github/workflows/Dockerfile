@@ -5,5 +5,8 @@ FROM ubuntu:20.04
 COPY ../.. /.
 COPY ./build_and_test.sh /.
 
+RUN apt-get update && apt-get install -y \
+    && apt-get install sudo
+
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
 # ENTRYPOINT ["/build_and_test.sh"]
