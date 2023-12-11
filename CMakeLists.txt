@@ -47,5 +47,11 @@ if(BUILD_TESTS)
 
     add_executable(actor_test tests/actor_test.cpp)
     target_link_libraries(actor_test GTest::gtest_main robo_ml)
-    gtest_add_tests(TARGET replay_buffer_test actor_test)
+
+    add_executable(observer_test tests/observer_test.cpp)
+    target_link_libraries(observer_test GTest::gtest_main robo_ml)
+
+    gtest_add_tests(TARGET replay_buffer_test)
+    gtest_add_tests(TARGET actor_test)
+    gtest_add_tests(TARGET observer_test)
 endif()

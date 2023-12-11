@@ -5,3 +5,4 @@
 #pragma once
 #include <robo_ml/replay_buffer.hpp>
 #include <robo_ml/actor.hpp>
+#include <robo_ml/observer.hpp>

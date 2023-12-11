@@ -1,0 +1,6 @@
+name: 'Test'
+description: 'Test using devcontainer'
+runs:
+  using: 'docker'
+  image: ubuntu:20.04
+  entrypoint: ".github/actions/test/build_and_test.sh"

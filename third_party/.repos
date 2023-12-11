@@ -1,0 +1,4 @@
+repositories:
+  gtest:
+    type: git
+    url: https://github.com/google/googletest.git
