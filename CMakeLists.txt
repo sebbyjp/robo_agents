@@ -9,6 +9,7 @@ target_include_directories(robo_ml INTERFACE
     $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>
 )
+target_compile_features(robo_ml INTERFACE cxx_std_17)
 
 write_basic_package_version_file(
     "${PROJECT_BINARY_DIR}/robo_mlConfigVersion.cmake"
