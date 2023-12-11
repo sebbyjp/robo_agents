@@ -1,4 +1,9 @@
-name: Build and Test on Ubuntu
+name: Build and Test on Ubuntu, MacOS, and Windows
+
+# TODO(speralta): Add MacOS and Windows to the matrix
+# Add Different C++, Python, C compilers to the matrix
+# Add different versions of CMake to the matrix
+# Add different OS versions to the matrix
 on:
     push:
         branches: 
