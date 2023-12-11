@@ -10,5 +10,5 @@ sudo apt-get update && sudo apt-get upgrade -y
 git clone  https://github.com/google/googletest.git third_party/gtest \
  && cd third_party/gtest \
  && mkdir -p build && cd build \
- && cmake .. && sudo make install \
+ && cmake .. && sudo make && sudo make install \
  && cd ../.. && rm -rf gtest
