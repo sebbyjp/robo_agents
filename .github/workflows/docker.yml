@@ -41,5 +41,5 @@ jobs:
       - name: Test
         run: |
           docker run --rm ${{ env.TEST_TAG }} \
-          &&  sudo chmod +rwx &&  /build_and_test.sh \
+          &&  sudo chmod +rwx /build_and_test.sh \
           && sudo sh /build_and_test.sh 
