@@ -18,7 +18,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2.0.0
       - name: Build and Test
-        run: docker build -t local < .github/workflows/Dockerfile'
+        run: docker build -t local .github/workflows/Dockerfile
       - name: Run tests
         run: docker run -it -v .:/. local /.build_and_test.sh
 
