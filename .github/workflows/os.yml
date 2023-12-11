@@ -4,17 +4,11 @@ on:
         branches: 
         - main
         - ci
-        paths:
-        - '**.Dockerfile'
-        - .github/workflows/docker.yml
     pull_request:
         branches: 
         - main
-        paths:
-            - '**.Dockerfile'
-            - .github/workflows/docker.yml
     workflow_dispatch:
-        
+
 permissions:
     contents: read
     pull-requests: write
