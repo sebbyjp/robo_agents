@@ -13,6 +13,7 @@
 #include <memory>
 #include <chrono>
 #include <shared_mutex>
+
 namespace robo
 {
 enum  class Status
@@ -36,9 +37,9 @@ class ReplayBuffer
 public:
   struct Entry
   {
-    const std::shared_ptr<T> value;
-    const int id = -1;
-    const std::chrono::nanoseconds timestamp = std::chrono::nanoseconds(0);
+    std::shared_ptr<T> value;
+    int id;
+    std::chrono::milliseconds timestamp;
   };
   /**
    * @brief Construct a new Replay Buffer object
@@ -51,13 +52,18 @@ public:
 
   const Status get_last(const int N, std::vector<Entry> & entries_out) const;
 
-  void add(
-    const std::shared_ptr<T> & value,
-    const std::chrono::nanoseconds timestamp = std::chrono::nanoseconds(0));
+  /**
+   * @brief   Adds a new entry to the buffer.
+   *
+   * @param value
+   * @return int The id of the new entry.
+   */
+  int add(
+    const std::shared_ptr<T> & value);
 
 private:
-  const int idFromIdx(size_t idx) const {return idx + num_pops_;}
-  const size_t idxFromId(int id) const {return id - num_pops_;}
+  const int id_from_idx(size_t idx) const {return idx + num_pops_;}
+  const size_t idx_from_id(int id) const {return id - num_pops_;}
   const size_t max_size_;
   int num_pops_ = 0;
   mutable std::shared_mutex mutex_;
@@ -78,10 +84,10 @@ const Status ReplayBuffer<T>::get(const int id, Entry & entry_out) const
   if (id < num_pops_) {
     return Status::MISS_TOO_LATE;
   }
-  if (idxFromId(id) >= buffer_.size()) {
+  if (idx_from_id(id) >= buffer_.size()) {
     return Status::MISS_TOO_EARLY;
   }
-  entry_out = buffer_[idxFromId(id)];
+  entry_out = buffer_[idx_from_id(id)];
   return Status::OK;
 }
 
@@ -97,15 +103,20 @@ const Status ReplayBuffer<T>::get_last(const int N, std::vector<Entry> & entries
 
 
 template<typename T>
-void ReplayBuffer<T>::add(
-  const std::shared_ptr<T> & value,
-  const std::chrono::nanoseconds timestamp)
+int ReplayBuffer<T>::add(
+  const std::shared_ptr<T> & value)
 {
   std::unique_lock lock(mutex_);
   if (buffer_.size() >= max_size_) {
     buffer_.pop_front();
     num_pops_++;
   }
-  buffer_.push_back(Entry{value, static_cast<int>(buffer_.size()) - 1, timestamp});
+  buffer_.push_back(
+    Entry{value,
+      static_cast<int>(buffer_.size()) - 1,
+      std::chrono::duration_cast<std::chrono::milliseconds>(
+        std::chrono::steady_clock::now().time_since_epoch())}
+  );
+  return buffer_.size() - 1;
 }
 } // namespace robo

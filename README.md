@@ -1,6 +1,14 @@
 # robo_ml
 Machine Learning Infrastructure for Robotics
 
+Application calls
+    env.get_obs
+    agent.act(obs)
+
+Ros app calls:
+    agent_server.get_action() = observer.get_obs(), return agent.act()
+    
+
 Agent:
     observer
     supervisor
