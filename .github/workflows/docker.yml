@@ -19,7 +19,7 @@ env:
 
 jobs:
   docker:
-    name: Testing Docker for ${{ matrix.cpu_arch }}, CXX ${{ matrix.cxx }} and CMAKE ${{ matrix.cmake }}
+    name: Test on ${{ matrix.cpu_arch }}, CXX=${{ matrix.cxx }},CMAKE=${{ matrix.cmake }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
