@@ -5,11 +5,11 @@ TF-Agents.
 
 # Features
 - Thread-safe and 10x speed up over std multi-threading libraries with [safe pointers](https://github.com/AlexeyAB/object_threadsafe)
-- Can handle upwards of 64 parallel threads without any significant overhead
+- Handles upwards of 64 parallel threads without any significant overhead. See [benchmarks here](https://github.com/AlexeyAB/object_threadsafe).
 - Support for 
-  - CXX 11 - Latest
+  - C++ 11, 14, 17, 20
   - MacOS Latest
-  - Ubuntu 16.04 - Latest
-  - CMake 3.14 - Latest
+  - Ubuntu 16.04, 18,04, 20.04, Latest
+  - CMake 3.14 -> Latest
   - arm64 and x86_64 architectures
 - CI on all supported platforms with [gtest](https://google.github.io/googletest/quickstart-cmake.html)
