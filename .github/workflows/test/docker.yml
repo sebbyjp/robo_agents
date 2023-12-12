@@ -17,7 +17,6 @@ env:
   TEST_TAG: roboml/app:test
   LATEST_TAG: roboml/app:latest
 
-# TODO(speralta): Make this a matrix
 jobs:
   docker:
     name: Testing Docker for ${{ matrix.cpu_arch }}, CXX ${{ matrix.cxx }} and CMAKE ${{ matrix.cmake }}
@@ -64,20 +63,4 @@ jobs:
             "cd robo_ml && sudo sh ./build_and_test.sh \
               --cpu-arch={{ matrix.cpu_arch.cmake }} \
               --cxx-std=${{ matrix.cxx }} \
-                {{ matrix.cmake }} "\
-      - name: Build arm64
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          dockerfile: .github/workflows/test/Dockerfile
-          load: true
-          tags: ${{ env.TEST_TAG }
-          args: 
-            --build-arg OS=ubuntu
-            --build-arg CPU_ARCH=
-      - name: Test arm64
-        run: |
-           docker run --privileged -it ${{ env.TEST_TAG }} \
-            sh -c "cd robo_ml && sudo sh .github/workflows/test/build_and_test.sh \
-            --cmake-version=3.10 -i --os=Linux --cpu-arch=arm64v8" --cxx-std=14\
-
+                {{ matrix.cmake }} "
