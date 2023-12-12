@@ -20,32 +20,23 @@ permissions:
 
 jobs:
   macos:
-    name: Test ${{ matrix.cxx }} and CMAKE ${{ matrix.cmake }}
+    name: MacOS-latest C++20
     runs-on: macos-latest
     strategy:
       matrix:
         cxx: [20] # [11, 14, 17, 20]
         cmake:
           - brew install --cask cmake # Latest=3.28.0
-<<<<<<< HEAD
           # - brew install --overwrite cmake@3.21.4
-=======
-          # - brew install cmake@3.21.4
->>>>>>> main
     steps:
     - name: Checkout
       uses: actions/checkout@v2.0.0
     - name: Run macos tests
       run: |
-        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && \
-        ${{ matrix.cmake }} &&\
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        ${{ matrix.cmake }}
         sudo chmod +rwx /usr/local && \
         sudo sh ./install.sh -c ${{ matrix.cxx }}  && \
-<<<<<<< HEAD
         sudo sh ./test.sh -c ${{ matrix.cxx }}
-     
-=======
-        sudo sh ./test.sh -c ${{ matrix.cxx }} && \
-        ${{ matrix.cmake }}
->>>>>>> main
+        sudo sh ./test.sh -c ${{ matrix.cxx }}
 
