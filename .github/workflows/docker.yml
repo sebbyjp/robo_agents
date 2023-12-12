@@ -1,4 +1,4 @@
-name: arm64 + x86_64
+name: arm64, x86_64
 on:
   push:
     branches: 
