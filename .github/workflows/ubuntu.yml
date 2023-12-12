@@ -1,4 +1,4 @@
-name: Ubuntu 16.04 -> Latest
+name: Ubuntu 16.04 -> Ubuntu Latest
 
 # TODO(speralta): Add MacOS and Windows to the matrix
 # Add Different C++, Python, C compilers to the matrix
@@ -39,7 +39,7 @@ jobs:
         apt-get update && sudo apt-get install -y && \
         apt-get install sudo && \ 
         sudo chmod +rwx /usr/local && \
-        sudo sh .github/workflows/test/build_and_test.sh \
+        sudo sh .github/workflows/build_and_test.sh \
         --cpu-arch=x86_64 -i \
         --cxx-std=${{ matrix.cxx }}
         ${{ matrix.cmake }} \

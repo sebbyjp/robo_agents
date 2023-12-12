@@ -1,4 +1,4 @@
-name: Build and Test on Docker
+name: arm64 + x86_64
 on:
   push:
     branches: 
@@ -51,7 +51,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          dockerfile: .github/workflows/test/Dockerfile
+          dockerfile: .github/workflows/Dockerfile
           load: true
           tags: ${{ env.TEST_TAG }
           args: 
