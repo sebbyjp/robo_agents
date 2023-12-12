@@ -25,7 +25,7 @@ ENV CPU_ARCH=${CPU_ARCH}
 # Copies your code file from your action repository to the filesystem path `/` of the container
 RUN mkdir -p  /${PACKAGE_NAME}
 COPY . /${PACKAGE_NAME}/.
-COPY .github/workflows/test/build_and_test.sh /${PACKAGE_NAME}/.
+COPY .github/workflows/build_and_test.sh /${PACKAGE_NAME}/.
 RUN apt-get update && apt-get -y upgrade  && apt-get install sudo
 RUN sudo chmod +rwx  /${PACKAGE_NAME}/build_and_test.sh 
 
