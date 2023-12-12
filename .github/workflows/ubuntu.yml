@@ -20,7 +20,7 @@ permissions:
 
 jobs:
   ubuntu:
-    name: Testing on ${{ matrix.os }}
+    name: Test on ${{ matrix.os }} with C++${{ matrix.cxx }}, CMake ${{ matrix.cmake }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
