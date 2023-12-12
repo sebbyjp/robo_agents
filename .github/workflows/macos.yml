@@ -37,5 +37,5 @@ jobs:
         sudo chmod +rwx /usr/local && \
         sudo sh ./install.sh -c ${{ matrix.cxx }}  && \
         sudo sh ./test.sh -c ${{ matrix.cxx }} && \
-        {{ matrix.cmake }}
+        ${{ matrix.cmake }}
 
