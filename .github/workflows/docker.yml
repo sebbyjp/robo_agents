@@ -19,7 +19,7 @@ env:
 
 jobs:
   docker:
-    name: Test on ${{ matrix.cpu_arch }}, CXX=${{ matrix.cxx }},CMAKE=${{ matrix.cmake }}
+    name: ${{ matrix.cpu_arch.cmake }}, CXX=${{ matrix.cxx }},{{ matrix.cmake }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -57,7 +57,7 @@ jobs:
           build-args: 
             --build-arg OS=ubuntu 
             --build-arg CPU_ARCH=${{ matrix.cpu_arch.docker }}
-      - name: Test ${{ matrix.cpu_arch }} for CXX ${{ matrix.cxx }} and CMAKE ${{ matrix.cmake }}
+      - name: ${{ matrix.cpu_arch.cmake }}, CXX ${{ matrix.cxx }},${{ matrix.cmake }}
         run: |
            docker run --privileged --rm ${{ env.TEST_TAG }} sh -c \
             "cd robo_ml && sudo sh ./build_and_test.sh \
