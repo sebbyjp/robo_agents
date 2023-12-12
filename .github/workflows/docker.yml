@@ -59,7 +59,7 @@ jobs:
             --build-arg CPU_ARCH=${{ matrix.cpu_arch.docker }}
       - name: Test ${{ matrix.cpu_arch }} for CXX ${{ matrix.cxx }} and CMAKE ${{ matrix.cmake }}
         run: |
-           docker run --privileged -it ${{ env.TEST_TAG }} sh -c \
+           docker run --privileged --rm ${{ env.TEST_TAG }} sh -c \
             "cd robo_ml && sudo sh ./build_and_test.sh \
               --cpu-arch=${{ matrix.cpu_arch.cmake }} \
               --cxx-std=${{ matrix.cxx }} \
