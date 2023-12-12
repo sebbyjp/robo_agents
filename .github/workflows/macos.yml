@@ -1,4 +1,4 @@
-name: MacOS Latest
+name: MacOS-latest
 
 # TODO(speralta): Add MacOS and Windows to the matrix
 # Add Different C++, Python, C compilers to the matrix
@@ -20,13 +20,13 @@ permissions:
 
 jobs:
   macos:
-    name: Testing on ${{ matrix.cxx }} and CMAKE ${{ matrix.cmake }}
+    name: Test ${{ matrix.cxx }} and CMAKE ${{ matrix.cmake }}
     runs-on: macos-latest
     strategy:
       matrix:
         cxx: [20] # [11, 14, 17, 20]
         cmake:
-          - brew install --cask cmake, # Latest=3.28.0
+          - brew install --cask cmake # Latest=3.28.0
           # - brew install cmake@3.21.4
     steps:
     - name: Checkout
