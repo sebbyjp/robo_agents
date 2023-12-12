@@ -26,20 +26,46 @@ jobs:
       matrix:
         #  os: [ubuntu-20.04, macos-latest, windows-latest]
         os: [ubuntu-16.04, ubuntu-20.04, ubuntu-latest]
-        cxx: [11, 14, 17, 20]
         cmake:
           - --cmake-version=3.14 --os=Linux 
-          - --cmake-version=3.20 --os=linux
+          # - --cmake-version=3.20 --os=linux
           - --cmake-version=3.28 --os=linux
     steps:
     - name: Checkout
       uses: actions/checkout@v2.0.0
-    - name: Run ubuntu tests
+    - name: c++20
       run: |
         apt-get update && apt-get upgrade -y && \
         apt-get install sudo && \ 
         sudo chmod +rwx /usr/local && \
         sudo sh .github/workflows/build_and_test.sh \
           --cpu-arch=x86_64 -i \
-          --cxx-std=${{ matrix.cxx }} \
+          --cxx-std=20 \
           ${{ matrix.cmake }}
+    - name: c++17
+      run: |
+        apt-get update && apt-get upgrade -y && \
+        apt-get install sudo && \ 
+        sudo chmod +rwx /usr/local && \
+        sudo sh .github/workflows/build_and_test.sh \
+          --cpu-arch=x86_64 -i \
+          --cxx-std=17 \
+          ${{ matrix.cmake }}
+    - name: c++14
+      run: |
+          apt-get update && apt-get upgrade -y && \
+          apt-get install sudo && \ 
+          sudo chmod +rwx /usr/local && \
+          sudo sh .github/workflows/build_and_test.sh \
+            --cpu-arch=x86_64 -i \
+            --cxx-std=14 \
+            ${{ matrix.cmake }}
+    - name: c++11
+      run: |
+          apt-get update && apt-get upgrade -y && \
+          apt-get install sudo && \ 
+          sudo chmod +rwx /usr/local && \
+          sudo sh .github/workflows/build_and_test.sh \
+            --cpu-arch=x86_64 -i \
+            --cxx-std=11 \
+            ${{ matrix.cmake }}
