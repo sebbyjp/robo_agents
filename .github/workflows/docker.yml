@@ -51,16 +51,16 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          dockerfile: .github/workflows/Dockerfile
+          file: .github/workflows/Dockerfile
           load: true
-          tags: ${{ env.TEST_TAG }
-          args: 
+          tags: ${{ env.TEST_TAG }}
+          build-args: 
             --build-arg OS=ubuntu 
             --build-arg CPU_ARCH=${{ matrix.cpu_arch.docker }}
       - name: Test ${{ matrix.cpu_arch }} for CXX ${{ matrix.cxx }} and CMAKE ${{ matrix.cmake }}
         run: |
            docker run --privileged -it ${{ env.TEST_TAG }} sh -c \
             "cd robo_ml && sudo sh ./build_and_test.sh \
-              --cpu-arch={{ matrix.cpu_arch.cmake }} \
+              --cpu-arch=${{ matrix.cpu_arch.cmake }} \
               --cxx-std=${{ matrix.cxx }} \
-              {{ matrix.cmake }} "
+              {${ matrix.cmake }} "
