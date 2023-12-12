@@ -1,11 +1,31 @@
 #!/bin/sh
+Help()
+{
+    # Display Help
+    echo "Install package globally."
+    echo
+    echo "Syntax: sh install.sh [-c|n]"
+    echo "options:"
+    echo "h     Print this Help."
+    echo "c     CXX Standard to use. (11, 14, 17, 20)"
+    echo
+}
 
-# Copyright (c) 2023 Sebastian Peralta
-# 
-# This software is released under the MIT License.
-# https://opensource.org/licenses/MIT
+CXX_STANDARD=17
+while getopts ":hc:" option; do
+   case $option in
+      h) # display Help
+         Help
+         exit;;
+      c) # CXX_STANDARD
+         CXX_STANDARD=$OPTARG;;
+     \?) # Invalid option
+         echo "Error: Invalid option"
+         exit;;
+   esac
+done
 
 
-sh build.sh
+sh build.sh -c $CXX_STANDARD
 cd build && make install
 cd .. && rm -rf build
