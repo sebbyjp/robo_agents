@@ -41,5 +41,5 @@ jobs:
         sudo chmod +rwx /usr/local && \
         sudo sh .github/workflows/build_and_test.sh \
         --cpu-arch=x86_64 -i \
-        --cxx-std=${{ matrix.cxx }}
-        ${{ matrix.cmake }} \
+        --cxx-std=${{ matrix.cxx }} && \
+        ${{ matrix.cmake }}

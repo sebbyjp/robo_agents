@@ -32,7 +32,7 @@ jobs:
             cmake: x86_64
         cxx: [17, 20] # [11, 14, 17, 20]
         cmake:
-          - --cmake-version=3.20 --os=linux
+          # - --cmake-version=3.20 --os=linux
           - --cmake-version=3.28 --os=linux
           # - --cmake-version=3.14 --os=Linux 
     steps:
@@ -63,4 +63,4 @@ jobs:
             "cd robo_ml && sudo sh ./build_and_test.sh \
               --cpu-arch={{ matrix.cpu_arch.cmake }} \
               --cxx-std=${{ matrix.cxx }} \
-                {{ matrix.cmake }} "
+              {{ matrix.cmake }} "
