@@ -63,4 +63,4 @@ jobs:
             "cd robo_ml && sudo sh ./build_and_test.sh \
               --cpu-arch=${{ matrix.cpu_arch.cmake }} \
               --cxx-std=${{ matrix.cxx }} \
-              {${ matrix.cmake }} "
+              ${{ matrix.cmake }} "
