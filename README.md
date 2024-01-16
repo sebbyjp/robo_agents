@@ -1,5 +1,5 @@
 # Robo ML
-[![arm64](https://github.com/sebbyjp/robo_ml/actions/workflows/docker.yml/badge.svg?branch=main)](https://github.com/sebbyjp/robo_ml/actions/workflows/docker.yml)
+[![arm64](https://github.com/sebbyjp/robo_agents/actions/workflows/docker.yml/badge.svg?branch=main)](https://github.com/sebbyjp/robo_agents/actions/workflows/docker.yml)
 
 Machine Learning Infrastructure for Robotics. This is a thread-safe, header-only
 library for deep learning in robotics. The interface is based off of Gym and 

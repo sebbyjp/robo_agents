@@ -2,7 +2,7 @@
 
 Help() {
     # Display Help
-    echo "Build and test script for robo_ml"
+    echo "Build and test script for robo_agents"
     echo
     echo "Syntax: sh build_and_test.sh [options]"
     echo "options:"

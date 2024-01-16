@@ -60,7 +60,7 @@ jobs:
       - name: ${{ matrix.cpu_arch.cmake }}, CXX ${{ matrix.cxx }},${{ matrix.cmake }}
         run: |
            docker run --privileged --rm ${{ env.TEST_TAG }} sh -c \
-            "cd robo_ml && sudo sh ./build_and_test.sh \
+            "cd robo_agents && sudo sh ./build_and_test.sh \
               --cpu-arch=${{ matrix.cpu_arch.cmake }} \
               --cxx-std=${{ matrix.cxx }} \
               ${{ matrix.cmake }} "
