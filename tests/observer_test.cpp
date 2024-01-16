@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include <robo_ml/robo_ml.hpp>
+#include <robo_agents/robo_agents.hpp>
 
 namespace robo
 {

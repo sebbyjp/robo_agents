@@ -18,9 +18,9 @@ template<typename ObsT, typename ... SrcTs>
 class Observer
 {
 public:
-  typedef std::function<std::shared_ptr<ObsT>(std::unique_ptr<SrcTs>...)> ObsFromSrcsFunctor;
+  typedef std::function<std::shared_ptr<ObsT>(std::unique_ptr<SrcTs>...)> ObsFromSrcsFunc;
 
-  Observer(ObsFromSrcsFunctor obs_from_srcs_function, size_t buffer_size = 10)
+  Observer(ObsFromSrcsFunc obs_from_srcs_function, size_t buffer_size = 10)
   : obs_from_srcs_function_(obs_from_srcs_function), history_(buffer_size)
   {
   }
@@ -40,7 +40,7 @@ public:
   ReplayBuffer<ObsT> & history() {return history_;}
 
 private:
-  ObsFromSrcsFunctor obs_from_srcs_function_;
+  ObsFromSrcsFunc obs_from_srcs_function_;
   ReplayBuffer<ObsT> history_;   // Stores observations in chronological order.
 };
 }  // namespace robo

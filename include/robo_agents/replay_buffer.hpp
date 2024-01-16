@@ -12,7 +12,7 @@
 #include <queue>
 #include <memory>
 #include <chrono>
-#include "robo_ml/safe_ptr.hpp"
+#include "robo_agents/safe_ptr.hpp"
 
 namespace robo
 {
@@ -104,6 +104,13 @@ const Status ReplayBuffer<T>::get_last(const int N, std::vector<Entry> & entries
 }
 
 
+/**
+ * @brief Adds a new entry to the buffer.
+ * 
+ * @tparam T  type of the value to store.
+ * @param value  value to store.
+ * @return int  id of the new entry.
+ */
 template<typename T>
 int ReplayBuffer<T>::add(
 	const std::shared_ptr<T> & value)
