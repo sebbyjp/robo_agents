@@ -1,4 +1,4 @@
-name: "C++ 11|14|17|20| Ubuntu 22.04 <-- Ubuntu 16.04 "
+name: "C++ 11|14|17|20| Ubuntu 22.04|20.04|18.04 "
 
 # TODO(speralta): Add MacOS and Windows to the matrix
 # Add Different C++, Python, C compilers to the matrix
@@ -25,7 +25,7 @@ jobs:
     strategy:
       matrix:
         #  os: [ubuntu-20.04, macos-latest, windows-latest]
-        os: [ubuntu-16.04, ubuntu-20.04, ubuntu-latest]
+        os: [ubuntu-18.04, ubuntu-20.04, ubuntu-latest]
         cmake:
           - --cmake-version=3.14 --os=Linux 
           # - --cmake-version=3.20 --os=linux
