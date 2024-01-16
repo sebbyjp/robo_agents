@@ -1,4 +1,4 @@
-name: MacOS-latest
+name: MacOS
 
 # TODO(speralta): Add MacOS and Windows to the matrix
 # Add Different C++, Python, C compilers to the matrix
