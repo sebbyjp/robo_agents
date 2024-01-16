@@ -1,4 +1,4 @@
-name: C++11,14,17,20 Ubuntu 16 -> Latest
+name: "C++ 11|14|17|20| Ubuntu 22.04 <-- Ubuntu 16.04 "
 
 # TODO(speralta): Add MacOS and Windows to the matrix
 # Add Different C++, Python, C compilers to the matrix
